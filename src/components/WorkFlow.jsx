@@ -1,26 +1,19 @@
 import React from 'react'
+import { useContext } from 'react'
+import { SkillContext } from '../contexts/SkillContext'
 
 const WorkFlow = () => {
+  const {workflows} = useContext(SkillContext);
   return (
     <>
-      <div className="subheading mb-3">Workflow</div>
+      <div className="subheading mb-3">İş Akışı</div>
         <ul className="fa-ul mb-0">
-          <li>
-            <span className="fa-li"><i className="fas fa-check" /></span>
-            Mobile-First, Responsive Design
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-check" /></span>
-            Cross Browser Testing &amp; Debugging
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-check" /></span>
-            Cross Functional Teams
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-check" /></span>
-            Agile Development &amp; Scrum
-          </li>
+          {
+            workflows.map(workflow => <li>
+            <span className="fa-li"><i className={workflow?.icon} /></span>
+            {workflow?.title}
+          </li>)
+          }
         </ul>
     </>
   )
