@@ -1,22 +1,24 @@
-import React from 'react'
-import { useContext } from 'react'
-import { SkillContext } from '../contexts/SkillContext'
+import React from "react";
+import { useContext } from "react";
+import { SkillContext } from "../contexts/SkillContext";
 
 const WorkFlow = () => {
-  const {workflows} = useContext(SkillContext);
+  const { workflows } = useContext(SkillContext);
   return (
     <>
       <div className="subheading mb-3">İş Akışı</div>
-        <ul className="fa-ul mb-0">
-          {
-            workflows.map(workflow => <li>
-            <span className="fa-li"><i className={workflow?.icon} /></span>
+      <ul className="fa-ul mb-0">
+        {workflows.map((workflow, index) => (
+          <li key={workflow.id ?? index}>
+            <span className="fa-li">
+              <i className={workflow?.icon} />
+            </span>
             {workflow?.title}
-          </li>)
-          }
-        </ul>
+          </li>
+        ))}
+      </ul>
     </>
-  )
-}
+  );
+};
 
-export default WorkFlow
+export default WorkFlow;

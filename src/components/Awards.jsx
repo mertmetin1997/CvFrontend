@@ -1,55 +1,30 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { AwardsContext } from "../contexts/AwardsContext";
 
 const Awards = () => {
+  const { awards } = useContext(AwardsContext);
+
   return (
-    <>
-      <section className="resume-section" id="awards">
+    <section className="resume-section" id="awards">
       <div className="resume-section-content">
-        <h2 className="mb-5">Awards &amp; Certifications</h2>
+        <h2 className="mb-5">Ödüller &amp; Sertifikalar</h2>
+        <h4>İstanbul Eğitim Akademi</h4>
+
         <ul className="fa-ul mb-0">
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            Google Analytics Certified Developer
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            Mobile Web Specialist - Google Certification
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            1
-            <sup>st</sup>
-            Place - University of Colorado Boulder - Emerging Tech Competition 2009
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            1
-            <sup>st</sup>
-            Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            2
-            <sup>nd</sup>
-            Place - University of Colorado Boulder - Emerging Tech Competition 2008
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            1
-            <sup>st</sup>
-            Place - James Buchanan High School - Hackathon 2006
-          </li>
-          <li>
-            <span className="fa-li"><i className="fas fa-trophy text-warning" /></span>
-            3
-            <sup>rd</sup>
-            Place - James Buchanan High School - Hackathon 2005
-          </li>
+          {awards.map((award) => (
+            <li key={award.id}>
+              <span className="fa-li">
+                <i className="fas fa-trophy text-warning" />
+              </span>
+              {award?.description?.split("\n").map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </li>
+          ))}
         </ul>
       </div>
     </section>
-    </>
-  )
-}
+  );
+};
 
-export default Awards
+export default Awards;

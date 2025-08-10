@@ -9,6 +9,8 @@ import { SocialAccountContextProvider } from "./contexts/SocialAccountContext.js
 import { ExperienceContextProvider } from "./contexts/ExperienceContext.jsx";
 import { EducationContextProvider } from "./contexts/EducationContext.jsx";
 import { SkillContextProvider } from "./contexts/SkillContext.jsx";
+import { InterestContextProvider } from "./contexts/InterestContext.jsx";
+import { AwardsContextProvider } from "./contexts/AwardsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,7 +21,11 @@ createRoot(document.getElementById("root")).render(
             <ExperienceContextProvider>
               <EducationContextProvider>
                 <SkillContextProvider>
-                  <App />
+                  <InterestContextProvider>
+                    <AwardsContextProvider>
+                      <App />
+                    </AwardsContextProvider>
+                  </InterestContextProvider>
                 </SkillContextProvider>
               </EducationContextProvider>
             </ExperienceContextProvider>
